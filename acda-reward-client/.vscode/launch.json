@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "DEV",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main_dev.dart",
+      "args": ["--flavor", "dev", "--target", "lib/main_dev.dart", "--dart-define=apiURL=http://localhost:8500"]
+    },
+    {
+      "name": "STG",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main_stg.dart",
+      "args": ["--flavor", "stg", "--target", "lib/main_stg.dart", "--dart-define=apiURL=http://13.236.174.181:8500"]
+    },
+    {
+      "name": "PRD",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main_prd.dart",
+      "args": ["--flavor", "prd", "--target", "lib/main_prd.dart", "--dart-define=apiURL=http://13.236.174.181:8500"]
+    }
+  ]
+}
