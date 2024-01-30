@@ -2,6 +2,7 @@ import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
 import { RewardService } from './reward.service';
 import AddRewardDto from './dto/add-reward.dto';
 import { RewardEnum } from '../../utils/reward_enum';
+import ForceAddRewardDto from './dto/force-add-reward.dto';
 
 @Controller('/api/v1/reward')
 export class RewardController {
@@ -42,5 +43,12 @@ export class RewardController {
         break;
     }
     return { message: 'Successfully added' };
+  }
+
+  @Post('/force')
+  @HttpCode(201)
+  forceAddReward(@Body() dto: ForceAddRewardDto) {
+    this.rewardService.forceAddReward(dto);
+    return { menubar: 'Successfully force add' };
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from '../../database/database.service';
 import { RewardEnum } from '../../utils/reward_enum';
+import ForceAddRewardDto from './dto/force-add-reward.dto';
 
 @Injectable()
 export class RewardService {
@@ -37,8 +38,12 @@ export class RewardService {
       rewList.push(RewardEnum.Fourth);
     }
 
-    const luckyIndex = this.getRandomArbitrary(0, rewList.length);
-    let result = rewList[luckyIndex];
+    let result = RewardEnum.Fourth;
+
+    if (rewList.length > 0) {
+      const luckyIndex = this.getRandomArbitrary(0, rewList.length);
+      result = rewList[luckyIndex];
+    }
 
     // NOTE: lock the first reward
     for (const element of rewList) {
@@ -57,5 +62,22 @@ export class RewardService {
 
   addOneReward(target: RewardEnum) {
     this.databaseService.addOneReward(target);
+  }
+
+  forceAddReward(dto: ForceAddRewardDto) {
+    let r = RewardEnum.Fourth;
+    if (dto.label == 'first') {
+      r = RewardEnum.First;
+    }
+    if (dto.label == 'second') {
+      r = RewardEnum.Second;
+    }
+    if (dto.label == 'third') {
+      r = RewardEnum.Third;
+    }
+    if (dto.label == 'fourth') {
+      r = RewardEnum.Fourth;
+    }
+    this.databaseService.forceChangeReward(r, dto.quantity);
   }
 }

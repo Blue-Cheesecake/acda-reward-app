@@ -16,6 +16,25 @@ export class DatabaseService {
     console.log('---------------');
   }
 
+  forceChangeReward(target: RewardEnum, quantity: number) {
+    switch (target) {
+      case RewardEnum.First:
+        this.numFirstReward = quantity;
+        break;
+      case RewardEnum.Second:
+        this.numSecondReward = quantity;
+        break;
+      case RewardEnum.Third:
+        this.numThirdReward = quantity;
+        break;
+      case RewardEnum.Fourth:
+        this.numFourthReward = quantity;
+        break;
+    }
+    console.log('Change reward quantity');
+    this.printReport();
+  }
+
   addOneReward(target: RewardEnum) {
     switch (target) {
       case RewardEnum.First:
