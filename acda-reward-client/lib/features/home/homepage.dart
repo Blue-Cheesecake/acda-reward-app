@@ -1,3 +1,5 @@
+import 'package:acda_reward_client/features/home/widgets/result_wd.dart';
+import 'package:acda_reward_client/features/home/widgets/roll_button_wd.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
@@ -11,10 +13,14 @@ class Homepage extends StatelessWidget {
         centerTitle: true,
       ),
       body: const Center(
-        child: Placeholder(
-          fallbackHeight: 100,
-          fallbackWidth: 100,
-          strokeWidth: 1,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ResultWD(),
+            SizedBox(height: 20),
+            RollButtonWD(),
+          ],
         ),
       ),
     );
