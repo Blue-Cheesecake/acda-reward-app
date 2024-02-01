@@ -15,11 +15,11 @@ class Homepage extends StatelessWidget {
       body: const Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ResultWD(),
-            SizedBox(height: 20),
+            SizedBox(height: 200),
             RollButtonWD(),
+            SizedBox(height: 20),
+            ResultWD(),
           ],
         ),
       ),

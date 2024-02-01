@@ -10,6 +10,7 @@ class RewardStateNotifier extends ARCStateNotifier<RewardState> {
   Future<void> fetchReward() async {
     safeState = RewardState.loading();
     final response = await getRewardUseCase.execute(null);
+    await Future.delayed(const Duration(seconds: 3));
 
     response.when(
       success: (data) {
